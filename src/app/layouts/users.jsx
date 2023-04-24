@@ -13,8 +13,12 @@ const Users = () => {
         <>
             <UserProvider>
                 {userId ? (
-                    edit ? (userId === currentUser._id
-                        ? <EditUserPage /> : <Redirect to={`/users/${currentUser._id}/edit`} />
+                    edit ? (
+                        userId === currentUser._id ? (
+                            <EditUserPage />
+                        ) : (
+                            <Redirect to={`/users/${currentUser._id}/edit`} />
+                        )
                     ) : (
                         <UserPage userId={userId} />
                     )
