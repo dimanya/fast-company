@@ -82,7 +82,7 @@ const {
 const authRequested = createAction("users/authRequested");
 const userCreateRequested = createAction("users/userCreateRequested");
 const createUserFailed = createAction("users/createUserFailed");
-// const userUpdateRequested = createAction("users/userUpdateRequested");
+const userUpdateRequested = createAction("users/userUpdateRequested");
 const updateUserFailed = createAction("users/updateUserFailed");
 
 export const logIn =
@@ -148,7 +148,7 @@ function createUser(payload) {
 
 export const updateUser = (payload) => async (dispatch) => {
     console.log(payload);
-        // dispatch(userUpdateRequested());
+        dispatch(userUpdateRequested());
         try {
             const { content } = await userService.update(payload);
             dispatch(userUpdated(content));
