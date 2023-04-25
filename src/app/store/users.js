@@ -56,7 +56,8 @@ const usersSlice = createSlice({
             if (!Array.isArray(state.entities)) {
                 state.entities = [];
             }
-            state.entities.push(action.payload);
+
+            state.entities = state.entities.map((u) => u._id === state.auth.userId ? action.payload : u);
         },
         userLoggedOut: (state) => {
             state.entities = null;
@@ -147,7 +148,6 @@ function createUser(payload) {
 };
 
 export const updateUser = (payload) => async (dispatch) => {
-    console.log(payload);
         dispatch(userUpdateRequested());
         try {
             const { content } = await userService.update(payload);
