@@ -41,10 +41,12 @@ const EditUserPage = () => {
         e.preventDefault();
         const isValid = validate();
         if (!isValid) return;
-        dispatch(updateUser({
-            ...data,
-            qualities: data.qualities.map((q) => q.value)
-        }));
+        dispatch(
+            updateUser({
+                ...data,
+                qualities: data.qualities.map((q) => q.value)
+            })
+        );
         history.push(`/users/${currentUser._id}`);
     };
     function getQualitiesListByIds(qualitiesIds) {
